@@ -1,0 +1,22 @@
+diff --git a/node_modules/yandex-market-language/lib/schemas.js b/node_modules/yandex-market-language/lib/schemas.js
+index 0ccd205..5d50e38 100644
+--- a/node_modules/yandex-market-language/lib/schemas.js
++++ b/node_modules/yandex-market-language/lib/schemas.js
+@@ -45,7 +45,7 @@ const BaseOffer = t.interface({
+   bid: t.maybe(t.Integer),
+   cbid: t.maybe(t.Integer),
+   fee: t.maybe(t.Integer),
+-  group_id: t.maybe(r.Maxlength(9)(t.String)),
++  group_id: t.maybe(r.Maxlength(20)(t.String)),
+   // end attributes
+   url: t.maybe(r.Maxlength(512)(r.Absoluteurl)), // @todo if contains non-latin chars, should be http, not https, or encoded
+   price: Price,
+@@ -131,7 +131,7 @@ Offer.dispatch = (x) => x.type || x.typePrefix
+ const Offers = t.list(Offer, 'Offers')
+ 
+ const YML = t.interface({
+-  name: r.Maxlength(20)(t.String),
++  name: r.Maxlength(100)(t.String),
+   company: t.String,
+   url: r.Maxlength(50)(r.Absoluteurl),
+   platform: t.maybe(t.String), // mostly not needed
